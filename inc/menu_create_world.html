@@ -1,0 +1,96 @@
+<img id="logo" src="./assets/img/logo_medium.png"></img>
+<div id="main_menu">
+	<div class="box" style="height: 252px">
+		<div class="box_border_left"></div>
+		<div class="box_border_right"></div>
+		<div class="box_border_top"></div>
+		<div class="box_border_bottom"></div>
+		<div class="box_corner_tl"></div>
+		<div class="box_corner_tr"></div>
+		<div class="box_corner_bl"></div>
+		<div class="box_corner_br"></div>
+		<div class="box_header">
+			Tworzenie świata
+		</div>
+		<div class="box_content scrollbar-game scrollable">
+			<div class="box_inside">
+				<form action="#">
+					<input type="text" name="world_name" placeholder="Nazwa">
+
+					<label for="world_gameplay_type">Typ rozgrywki</label>
+					<select name="world_gameplay_type" id="world_gameplay_type">
+						<option value="creative" selected="selected">Kreatywny</option>
+						<option value="survival">Przetrwanie</option>
+					</select>
+
+					<label for="world_size">Wielkość świata</label>
+					<select name="world_size" id="world_size">
+						<option value="big">Duży</option>
+						<option value="medium" selected="selected">Normalny</option>
+						<option value="small">Mały</option>
+					</select>
+
+					<label for="world_type">Typ świata</label>
+					<select name="world_type" id="world_type">
+						<option value="super_flat">Super płaski</option>
+						<option value="normal" selected="selected">Normalny</option>
+					</select>
+
+					<label for="world_hardness">Poziom trudności</label>
+					<select name="world_hardness" id="world_hardness">
+						<option value="hardcore">Hardcore</option>
+						<option value="hard">Trudny</option>
+						<option value="normal" selected="selected">Normalny</option>
+						<option value="easy">Łatwy</option>
+					</select>
+				</form>
+			</div>
+		</div>
+	</div>
+	<button id="create_world">Stwórz</button>
+	<button onclick="MenuState.loadContent('menu_single_player')">Wróć</button>
+</div>
+<div class="dialog hidden" id="worldCreator_dialog">
+	<div class="dark_mask"></div>
+	<div class="box no_header" style="height: 42px; width: 360px">
+		<div class="box_border_left"></div>
+		<div class="box_border_right"></div>
+		<div class="box_border_top"></div>
+		<div class="box_border_bottom"></div>
+		<div class="box_corner_tl"></div>
+		<div class="box_corner_tr"></div>
+		<div class="box_corner_bl"></div>
+		<div class="box_corner_br"></div>
+		<div class="box_content">
+			<div class="box_inside"></div>
+		</div>
+	</div>
+</div>
+<div id="bottom_dark_gradient"></div>
+<div id="left_footer">v0.1</div>
+<div id="right_footer">NexTeam &copy;</div>
+<script>
+	$(document).ready(function(){
+        $('.scrollbar-game').scrollbar();
+        $('select').selectric();
+
+        $('#create_world').click(function()
+        {
+        	var worldCreator  = new WorldCreator();
+        	var worldName     = $('form input[name="world_name"]').val();
+        	var gameplayType  = $('form select[name="world_gameplay_type"]').val();
+        	var worldSize     = $('form select[name="world_size"]').val();
+        	var worldType     = $('form select[name="world_type"]').val();
+        	var worldHardness = $('form select[name="world_generator"]').val();
+        	worldCreator.setWorldData(worldName, gameplayType, worldSize, worldType, worldHardness);
+        	worldCreator.setDisplayBox($('#worldCreator_dialog'));
+        	if (worldCreator.create())
+        	{
+        		setTimeout(function()
+        		{
+        			MenuState.loadContent('menu_single_player');
+        		}, 1000);
+        	}
+        });
+    });
+</script>

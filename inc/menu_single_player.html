@@ -1,0 +1,64 @@
+<img id="logo" src="./assets/img/logo_medium.png"></img>
+<div id="main_menu">
+	<div class="box" style="height: 252px;" id="world_list">
+		<div class="box_border_left"></div>
+		<div class="box_border_right"></div>
+		<div class="box_border_top"></div>
+		<div class="box_border_bottom"></div>
+		<div class="box_corner_tl"></div>
+		<div class="box_corner_tr"></div>
+		<div class="box_corner_bl"></div>
+		<div class="box_corner_br"></div>
+		<div class="box_header">
+			Wybierz świat
+		</div>
+		<div class="box_content scrollbar-game scrollable">
+			<div class="box_inside"></div>
+		</div>
+	</div>
+	<button onclick="MenuState.loadContent('menu_create_world')">Nowy świat</button>
+	<button onclick="MenuState.loadContent('menu')">Wróć</button>
+</div>
+<div id="bottom_dark_gradient"></div>
+<div id="left_footer">v0.1</div>
+<div id="right_footer">NexTeam &copy;</div>
+<script>
+	function updateBox()
+	{
+		if ($('.scrollbar-game .box_inside').outerHeight() < $('.scrollbar-game').parent().height())
+    	{
+    		$('.scrollbar-game').removeClass('scrollable');
+    	}
+    	else
+    	{
+    		if (!$('.scrollbar-game').hasClass('scrollable'))
+    		{
+    			$('.scrollbar-game').addClass('scrollable');
+    		}
+    	}
+	}
+
+	$(document).ready(function(){
+        $('.scrollbar-game').scrollbar();
+
+        updateBox();
+        setInterval(function()
+        {
+        	updateBox();
+        }, 100);
+
+        var worlds = World.getList();
+        worlds.forEach(function(world)
+        {
+        	$('#world_list').find('.box_inside').append(
+        		'<div class="world_item">'+
+        			'<div class="header">'+
+        				'<div class="name">'+world.worldName+'</div>'+
+        			'</div>'+
+        			'<div class="info tleft">Typ: '+world.worldType+'</div>'+
+        			'<div class="info tleft">Czas: '+world.gameTime+'</div>'+
+        		'</div>'
+        	);
+        });
+    });
+</script>

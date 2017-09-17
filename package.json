@@ -1,0 +1,24 @@
+{
+  "main": "index.html",
+  "name": "Avalion",
+  "description": "demo app of node-webkit",
+  "version": "0.1.0",
+  "keywords": [ "demo", "node-webkit" ],
+  "window": {
+    "title": "Avalion",
+    "icon": "link.png",
+    "toolbar": true,
+    "frame": false,
+    "width": 800,
+    "height": 600,
+    "position": "center",
+    "min_width": 800,
+    "min_height": 600,
+    "max_width": 800,
+    "max_height": 600
+  },
+  "webkit": {
+    "plugin": true
+  },
+  "chromium-args": "--enable-webgl --ignore-gpu-blacklist"
+}
