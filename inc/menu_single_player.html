@@ -12,7 +12,7 @@
 		<div class="box_header">
 			Wybierz świat
 		</div>
-		<div class="box_content scrollbar-game scrollable">
+		<div class="box_content">
 			<div class="box_inside"></div>
 		</div>
 	</div>
@@ -23,30 +23,7 @@
 <div id="left_footer">v0.1</div>
 <div id="right_footer">NexTeam &copy;</div>
 <script>
-	function updateBox()
-	{
-		if ($('.scrollbar-game .box_inside').outerHeight() < $('.scrollbar-game').parent().height())
-    	{
-    		$('.scrollbar-game').removeClass('scrollable');
-    	}
-    	else
-    	{
-    		if (!$('.scrollbar-game').hasClass('scrollable'))
-    		{
-    			$('.scrollbar-game').addClass('scrollable');
-    		}
-    	}
-	}
-
 	$(document).ready(function(){
-        $('.scrollbar-game').scrollbar();
-
-        updateBox();
-        setInterval(function()
-        {
-        	updateBox();
-        }, 100);
-
         var worlds = World.getList();
         worlds.forEach(function(world)
         {

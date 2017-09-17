@@ -12,7 +12,7 @@
 		<div class="box_header">
 			Tworzenie świata
 		</div>
-		<div class="box_content scrollbar-game scrollable">
+		<div class="box_content">
 			<div class="box_inside">
 				<form action="#">
 					<input type="text" name="world_name" placeholder="Nazwa">
@@ -71,8 +71,7 @@
 <div id="right_footer">NexTeam &copy;</div>
 <script>
 	$(document).ready(function(){
-        $('.scrollbar-game').scrollbar();
-        $('select').selectric();
+        $('select').selectric({maxHeight: 140});
 
         $('#create_world').click(function()
         {

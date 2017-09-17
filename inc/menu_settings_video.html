@@ -1,0 +1,46 @@
+<img id="logo" src="./assets/img/logo_medium.png"></img>
+<div id="main_menu">
+	<div class="box" style="height: 252px">
+		<div class="box_border_left"></div>
+		<div class="box_border_right"></div>
+		<div class="box_border_top"></div>
+		<div class="box_border_bottom"></div>
+		<div class="box_corner_tl"></div>
+		<div class="box_corner_tr"></div>
+		<div class="box_corner_bl"></div>
+		<div class="box_corner_br"></div>
+		<div class="box_header">
+			Tworzenie świata
+		</div>
+		<div class="box_content">
+			<div class="box_inside">
+				<form action="#">
+					<label for="settings_screen_resolution">Rozdzielczość</label>
+					<select name="settings_screen_resolution" id="settings_screen_resolution">
+						<option value="1920x1080">1920 x 1080</option>
+						<option value="1680x1050">1680 x 1050</option>
+						<option value="1366x768">1366 x 768</option>
+						<option value="1280x720">1280 x 720</option>
+						<option value="1024x768">1024 x 768</option>
+						<option value="800x600" selected="selected">800 x 600</option>
+					</select>
+
+					<label for="settings_display">Wyświetlanie</label>
+					<select name="settings_display" id="settings_display">
+						<option value="window" selected="selected">Okno</option>
+						<option value="fullscreen">Pełny ekran</option>
+					</select>
+				</form>
+			</div>
+		</div>
+	</div>
+	<button onclick="MenuState.loadContent('menu_settings')" style="margin-top: 30px">Zapisz i wróć</button>
+</div>
+<div id="bottom_dark_gradient"></div>
+<div id="left_footer">v0.1</div>
+<div id="right_footer">NexTeam &copy;</div>
+<script>
+	$(document).ready(function(){
+        $('select').selectric({maxHeight: 140});
+    });
+</script>
