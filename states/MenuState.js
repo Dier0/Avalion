@@ -39,7 +39,16 @@ var MenuState =
 			else
 			{
 				$('#content').html(data);
+				$('select').selectric({maxHeight: 140});
 			}
 		});
+	},
+
+	render: function()
+	{
+		if (config.general.showFps)
+		{
+			Engine.game.debug.text(Engine.game.time.fps, 3, 14, '#000000');
+		}
 	}
 }

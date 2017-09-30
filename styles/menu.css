@@ -1,22 +1,28 @@
 * {box-sizing: border-box;}
 
+#content
+{
+	position: fixed;
+	z-index: 1;
+}
+
 #logo
 {
 	position: fixed;
 	z-index: 1;
-	top: 30px;
-	left: 50%;
-	transform: translate(-50%, 0);
+	top: 25px;
+	left: 166px;
+	margin: 0 auto;
 	float: left;
+	width: 468px;
 }
 
 #main_menu
 {
 	position: fixed;
 	z-index: 1;
-	left: 50%;
-	transform: translate(-50%, 0);
-	top: 160px;
+	left: 190px;
+	top: 140px;
 	float: left;
 	width: 420px;
 }
@@ -50,8 +56,11 @@
 	font-size: 12px;
 	font-weight: bold;
 	position: fixed;
-	left: 3px;
-	bottom: 3px;
+	left: 20px;
+	width: 100px;
+	height: 30px;
+	top: 570px;
+	line-height: 30px;
 }
 
 #right_footer
@@ -61,16 +70,19 @@
 	font-size: 12px;
 	font-weight: bold;
 	position: fixed;
-	right: 3px;
-	bottom: 3px;
+	left: 680px;
+	width: 100px;
+	height: 30px;
+	top: 570px;
+	line-height: 30px;
+	text-align: right;
 }
 
 #bottom_dark_gradient
 {
-	width: 100%;
+	width: 800px;
 	position: fixed;
-	left: 0;
-	bottom: 0;
+	top: 500px;
 	height: 100px;
 	background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.8));
 }
@@ -117,6 +129,7 @@
 	background: url('../assets/img/box_bg.png');
 	position: relative;
 	float: left;
+	margin-top: 10px;
 	margin-bottom: 15px;
 	box-shadow: 0 0 15px 3px rgba(0,0,0,0.8);
 }

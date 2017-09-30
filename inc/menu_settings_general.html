@@ -1,0 +1,59 @@
+<img id="logo" src="./assets/img/logo_medium.png"></img>
+<div id="main_menu">
+	<div class="box" style="height: 290px">
+		<div class="box_border_left"></div>
+		<div class="box_border_right"></div>
+		<div class="box_border_top"></div>
+		<div class="box_border_bottom"></div>
+		<div class="box_corner_tl"></div>
+		<div class="box_corner_tr"></div>
+		<div class="box_corner_bl"></div>
+		<div class="box_corner_br"></div>
+		<div class="box_header">
+			Ogólne
+		</div>
+		<div class="box_content">
+			<div class="box_inside">
+				<form action="#">
+					<div class="checkbox">
+						<input type="checkbox" name="settings_fps" id="settings_fps">
+						<label for="settings_fps">Pokazuj FPS</label>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<button id="save_settings" onclick="MenuState.loadContent('menu_settings')" style="margin-top: 30px">Zapisz i wróć</button>
+	<button onclick="MenuState.loadContent('menu_settings')">Wróć</button>
+</div>
+<div id="bottom_dark_gradient"></div>
+<div id="left_footer">v0.1</div>
+<div id="right_footer">NexTeam &copy;</div>
+<script type="text/javascript">
+	$(document).ready(function()
+	{
+		$('button#save_settings').click(function()
+		{
+			var showFpsEl = $('input#settings_fps').val();
+			
+			if (showFpsEl == 'on')
+			{
+				var showFps = true;
+			}
+			else
+			{
+				var showFps = false;
+			}
+
+			var updatedData =
+			{
+				general:
+				{
+					showFps: showFps
+				}
+			};
+			console.log(updatedData);
+			//Config.save(updatedData);
+		});
+	});
+</script>
