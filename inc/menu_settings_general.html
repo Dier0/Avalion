@@ -15,15 +15,21 @@
 		<div class="box_content">
 			<div class="box_inside">
 				<form action="#">
+					<label for="settings_language">Język</label>
+					<select name="settings_language" id="settings_language">
+						<option value="polish">Polski</option>
+						<option value="english">English</option>
+					</select>
+
 					<div class="checkbox">
 						<input type="checkbox" name="settings_fps" id="settings_fps">
-						<label for="settings_fps">Pokazuj FPS</label>
+						<label for="settings_fps" class="noborder">Pokazuj FPS</label>
 					</div>
 				</form>
 			</div>
 		</div>
 	</div>
-	<button id="save_settings" onclick="MenuState.loadContent('menu_settings')" style="margin-top: 30px">Zapisz i wróć</button>
+	<button id="save_settings" onclick="MenuState.loadContent('menu_settings')" style="margin-top: 22px">Zapisz i wróć</button>
 	<button onclick="MenuState.loadContent('menu_settings')">Wróć</button>
 </div>
 <div id="bottom_dark_gradient"></div>
@@ -32,28 +38,23 @@
 <script type="text/javascript">
 	$(document).ready(function()
 	{
+		$('select#settings_language').val(config.general.language).attr('selected', 'selected');
+		if (config.general.showFps) $('input#settings_fps').attr('checked', 'checked');
+
 		$('button#save_settings').click(function()
 		{
-			var showFpsEl = $('input#settings_fps').val();
+			var language = $('select#settings_language').val();
+			var showFps  = $('input#settings_fps').is(':checked');
 			
-			if (showFpsEl == 'on')
-			{
-				var showFps = true;
-			}
-			else
-			{
-				var showFps = false;
-			}
-
 			var updatedData =
 			{
 				general:
 				{
+					language: language,
 					showFps: showFps
 				}
 			};
-			console.log(updatedData);
-			//Config.save(updatedData);
+			Config.save(updatedData, true);
 		});
 	});
 </script>

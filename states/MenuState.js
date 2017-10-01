@@ -48,7 +48,7 @@ var MenuState =
 	{
 		if (config.general.showFps)
 		{
-			Engine.game.debug.text(Engine.game.time.fps, 3, 14, '#000000');
+			Engine.game.debug.text(Engine.game.time.fps, 3, 14, '#ffffff');
 		}
 	}
 }

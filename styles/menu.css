@@ -295,15 +295,16 @@ input[type="text"]
 .selectric-items li.selected { background: url('../assets/img/box_bg.png'); color: #111 }
 .selectric-items li:hover { background: url('../assets/img/box_bg_h.png'); color: #111 }
 
-form label
+form label:not(.noborder)
 {
 	width: calc(100% - 6px);
 	margin: 0 3px;
-	padding: 4px;
+	padding: 4px 0 0 6px;
 	color: #111;
-	font-size: 12px;
+	font-size: 14px;
 	float: left;
 	position: relative;
+	border-bottom: 1px solid rgba(0,0,0,0.3);
 }
 
 .hidden { display: none }

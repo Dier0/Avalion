@@ -22,19 +22,26 @@
 						<option value="1366x768">1366 x 768</option>
 						<option value="1280x720">1280 x 720</option>
 						<option value="1024x768">1024 x 768</option>
-						<option value="800x600" selected="selected">800 x 600</option>
+						<option value="800x600">800 x 600</option>
 					</select>
 
 					<label for="settings_display">Wyświetlanie</label>
 					<select name="settings_display" id="settings_display">
-						<option value="window" selected="selected">Okno</option>
+						<option value="window">Okno</option>
 						<option value="fullscreen">Pełny ekran</option>
+					</select>
+
+					<label for="settings_shadows_quality">Dokładność cieni</label>
+					<select name="settings_shadows_quality" id="settings_shadows_quality">
+						<option value="3">Dokładne</option>
+						<option value="2">Optymalne</option>
+						<option value="1">Wydajne</option>
 					</select>
 				</form>
 			</div>
 		</div>
 	</div>
-	<button id="save_settings" onclick="MenuState.loadContent('menu_settings')" style="margin-top: 30px">Zapisz i wróć</button>
+	<button id="save_settings" onclick="MenuState.loadContent('menu_settings')" style="margin-top: 22px">Zapisz i wróć</button>
 	<button onclick="MenuState.loadContent('menu_settings')">Wróć</button>
 </div>
 <div id="bottom_dark_gradient"></div>
@@ -43,10 +50,16 @@
 <script type="text/javascript">
 	$(document).ready(function()
 	{
+		var resolutionStr = config.video.resolution.width + 'x' + config.video.resolution.height;
+		$('select#settings_screen_resolution').val(resolutionStr).attr('selected', 'selected');
+		$('select#settings_display').val(config.video.display).attr('selected', 'selected');
+		$('select#settings_shadows_quality').val(config.video.shadowsQuality).attr('selected', 'selected');
+
 		$('button#save_settings').click(function()
 		{
-			var resolution = $('select#settings_screen_resolution').val();
-			var display    = $('select#settings_display').val();
+			var resolution     = $('select#settings_screen_resolution').val();
+			var display        = $('select#settings_display').val();
+			var shadowsQuality = $('select#settings_shadows_quality').val();
 
 			resolution = resolution.split('x');
 			var updatedData =
@@ -58,12 +71,12 @@
 						width: parseInt(resolution[0]),
 						height: parseInt(resolution[1])
 					},
-
-					display: display
+					display: display,
+					shadowsQuality: shadowsQuality
 				}
 			};
 
-			Config.save(updatedData);
+			Config.save(updatedData, true);
 		});
 	});
 </script>
